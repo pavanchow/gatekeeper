@@ -1,0 +1,21 @@
+[package]
+name = "gatekeeper"
+version = "0.1.0"
+edition = "2021"
+authors = ["Pavan Nallamothu"]
+description = "A from-scratch token authentication toolkit: HMAC-SHA256 signed tokens and salted password hashing, no crypto crates."
+license = "MIT"
+
+[[bin]]
+name = "gatekeeper"
+path = "src/main.rs"
+
+[lib]
+name = "gatekeeper"
+path = "src/lib.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
