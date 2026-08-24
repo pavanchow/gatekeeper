@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gatekeeper: an auth server in Rust you can read end to end</title>
   <meta name="description" content="Gatekeeper is an auth server in Rust: HMAC-SHA256 signed tokens and salted password hashing built from scratch, no crypto crates, verifiable against known test vectors.">
-  <meta name="author" content="Pavan Nallamothu">
-  <meta name="keywords" content="auth server in Rust, JWT, HMAC-SHA256, SHA-256, password hashing, token authentication, Rust security, Pavan Nallamothu">
+  <meta name="author" content="Pavan Nallamothu (pavanchow)">
+  <meta name="keywords" content="auth server in Rust, JWT, HMAC-SHA256, SHA-256, password hashing, token authentication, Rust security, Pavan Nallamothu, pavanchow">
   <link rel="canonical" href="https://pavanchow.github.io/gatekeeper/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Gatekeeper: an auth server in Rust you can read end to end">
@@ -108,6 +108,10 @@
     footer{padding:64px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted)}
     footer .name{color:var(--ink);font-weight:600}
   </style>
+<link rel="author" href="https://github.com/pavanchow">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Pavan Nallamothu","alternateName":"pavanchow","url":"https://github.com/pavanchow","sameAs":["https://github.com/pavanchow","https://hackerone.com/pavanchow"]}
+</script>
 </head>
 <body>
   <nav><div class="row">
@@ -192,7 +196,7 @@ gatekeeper verify &lt;token&gt; --secret my-signing-key</pre>
 
   <noscript>
     <div class="wrap" style="padding:40px 28px;color:#6a6d78">
-      Gatekeeper is an auth server in Rust built from scratch: SHA-256 and HMAC-SHA256 implemented with no crypto crates, HMAC-SHA256 signed tokens carrying subject, issued-at, and expiry claims, verified with a constant-time comparison, and salted password hashing that is honestly labeled as demo-grade rather than production-ready. It ships as a Rust library and a CLI with issue, verify, hash, and check commands. Source at github.com/pavanchow/gatekeeper. By Pavan Nallamothu.
+      Gatekeeper is an auth server in Rust built from scratch: SHA-256 and HMAC-SHA256 implemented with no crypto crates, HMAC-SHA256 signed tokens carrying subject, issued-at, and expiry claims, verified with a constant-time comparison, and salted password hashing that is honestly labeled as demo-grade rather than production-ready. It ships as a Rust library and a CLI with issue, verify, hash, and check commands. Source at github.com/pavanchow/gatekeeper. By Pavan Nallamothu (pavanchow).
     </div>
   </noscript>
 
