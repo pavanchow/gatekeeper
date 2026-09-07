@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
   <title>Gatekeeper: an auth server in Rust you can read end to end</title>
   <meta name="description" content="Gatekeeper is an auth server in Rust: HMAC-SHA256 signed tokens and salted password hashing built from scratch, no crypto crates, verifiable against known test vectors.">
   <meta name="author" content="Pavan Nallamothu (pavanchow)">
@@ -107,6 +108,13 @@
 
     footer{padding:64px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted)}
     footer .name{color:var(--ink);font-weight:600}
+    .howto{max-width:680px;margin:26px auto 0;border:1px solid var(--line);border-radius:14px;background:var(--panel2)}
+    .howto summary{cursor:pointer;padding:14px 18px;font:600 14px var(--mono);color:var(--ink);list-style:none}
+    .howto summary::-webkit-details-marker{display:none}
+    .howto summary::before{content:"▸";margin-right:9px;color:var(--accent)}
+    .howto[open] summary::before{content:"▾"}
+    .howto .body{padding:0 18px 16px;color:var(--muted);font-size:15px}
+    .howto .body b{color:var(--ink)}
   </style>
 <link rel="author" href="https://github.com/pavanchow">
 <script type="application/ld+json">
@@ -124,6 +132,7 @@
   </div></nav>
 
   <div class="hero">
+    <img src="logo.svg" alt="Gatekeeper logo" width="72" height="72" style="display:block;margin:0 auto 18px">
     <p class="eyebrow">Rust · no crypto crates · known-answer tested</p>
     <h1>An auth server in Rust<br>you can read end to end.</h1>
     <p class="sub">Gatekeeper is a token authentication toolkit built from scratch: SHA-256 and HMAC-SHA256 written by hand, signed tokens with claims and expiry, and salted password hashing. No black box. Here is the real engine, running in your browser.</p>
@@ -164,6 +173,11 @@
 
       <p class="self-check" id="selfCheck">running SHA-256 / HMAC-SHA256 self-check against RFC 4231 vectors&hellip;</p>
     </div>
+
+    <details class="howto">
+      <summary>How to use this playground</summary>
+      <div class="body">Set a <b>Subject</b>, <b>Secret</b>, and <b>TTL</b>, then hit <b>Issue token</b> to mint an HMAC-SHA256 signed token and see its decoded header and payload. Copy it into <b>Token to verify</b> (issuing fills it in automatically) and press <b>Verify</b> to recompute the signature and check expiry. Hit <b>Tamper &amp; verify</b> to flip one byte of the payload and watch the signature check reject it. The line at the bottom shows the SHA-256 and HMAC self-check against the RFC 4231 vectors, the same algorithm as the Rust crate, ported to JavaScript.</div>
+    </details>
   </div>
 
   <section id="how">

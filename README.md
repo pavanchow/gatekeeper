@@ -1,3 +1,5 @@
+<img src="docs/logo.svg" alt="Gatekeeper logo" width="96">
+
 # Gatekeeper
 
 **An auth server in Rust you can read end to end: HMAC-SHA256 signed tokens and salted password hashing, built from scratch with no crypto crates.**

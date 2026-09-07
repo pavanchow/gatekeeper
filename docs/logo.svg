@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Gatekeeper logo">
+  <defs>
+    <linearGradient id="gkT" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#31b088"/>
+      <stop offset="1" stop-color="#166b4f"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#gkT)"/>
+  <path d="M64 20 L100 34 V64 C100 90 84 104 64 112 C44 104 28 90 28 64 V34 Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="64" cy="56" r="10" fill="#fff"/>
+  <path d="M59 62 H69 L72 84 H56 Z" fill="#fff"/>
+</svg>
