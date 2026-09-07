@@ -193,6 +193,18 @@
     </div>
   </section>
 
+  <section id="why">
+    <h2>Design choices, not defaults.</h2>
+    <p class="lead">Readability is the point. Every decision below is in service of code you can open and check, not a benchmark.</p>
+    <div class="rows">
+      <div class="r"><b>From scratch, no crypto crates</b><p>SHA-256 is written from the FIPS 180-4 spec and HMAC-SHA256 from RFC 2104. The only dependency is clap, for argument parsing. Nothing hides the cryptography behind a black box.</p></div>
+      <div class="r"><b>Constant-time comparison</b><p>Signatures are compared with no early exit, so a rejected token leaks no timing signal about how many bytes matched.</p></div>
+      <div class="r"><b>Signature before claims</b><p>Expiry and subject are read only after the HMAC verifies. A tampered token fails on the signature, before its claims are ever trusted.</p></div>
+      <div class="r"><b>Bounded input, no panics</b><p>Tokens, subjects, secrets, and passwords reject oversized input before any hashing, and every failure path returns a typed error rather than panicking.</p></div>
+      <div class="r"><b>Honest about the password hash</b><p>Password hashing is a salted HMAC stretch, labeled demo-grade in the README. It is not Argon2, scrypt, or bcrypt, and it says so. Use Argon2id for real passwords.</p></div>
+    </div>
+  </section>
+
   <section id="source">
     <h2>Same engine, four surfaces.</h2>
     <div class="rows">
@@ -201,11 +213,26 @@
       <div class="r"><b>Browser</b><p>The demo above is the same algorithm, ported to JavaScript and checked against the same RFC vectors on load.</p></div>
       <div class="r"><b>Tests</b><p><code>cargo test</code> runs SHA-256 and HMAC-SHA256 against known-answer vectors, plus round-trip, tamper, and expiry tests.</p></div>
     </div>
-    <pre class="code"><span class="c"># issue a token, valid for one hour</span>
-gatekeeper issue --sub alice --ttl 3600 --secret my-signing-key
+    <pre class="code"><span class="c"># issue a token, valid for one hour (real output from the release binary)</span>
+$ gatekeeper issue --sub alice --ttl 3600 --secret my-signing-key
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbGljZSIsImlhdCI6MTc4ODc4NTU1NCwiZXhwIjoxNzg4Nzg5MTU0fQ.jlqdRAZD8lVWz2QQJhACzB4lmitXe7-Z5YtfJOjNmj0
 
-<span class="c"># verify it</span>
-gatekeeper verify &lt;token&gt; --secret my-signing-key</pre>
+<span class="c"># verify it: recompute the HMAC, compare in constant time, then check expiry</span>
+$ gatekeeper verify &lt;token&gt; --secret my-signing-key
+valid
+sub: alice
+iat: 1788785554
+exp: 1788789154
+
+<span class="c"># wrong secret is rejected before any claim is trusted</span>
+$ gatekeeper verify &lt;token&gt; --secret wrong-key
+invalid: signature does not match, token rejected
+
+<span class="c"># salted, stretched password hash, then a check</span>
+$ gatekeeper hash "correct horse battery staple"
+gkdf-hmac-sha256$100000$m28uNVPdvAViSu3ETh1uJA$A3I69UglOe5Yc7vPsvIWQwwNL3hJ3AxxUhE7nCl51YE
+$ gatekeeper check "correct horse battery staple" &lt;hash&gt;
+match</pre>
   </section>
 
   <noscript>
