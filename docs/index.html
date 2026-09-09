@@ -15,6 +15,8 @@
   <meta property="og:url" content="https://pavanchow.github.io/gatekeeper/">
   <meta property="og:site_name" content="Gatekeeper">
   <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Gatekeeper: an auth server in Rust you can read end to end">
+  <meta name="twitter:description" content="An auth server in Rust: HMAC-SHA256 signed tokens and salted password hashing, built from scratch, no crypto crates. Try it live in the browser.">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Gatekeeper","applicationCategory":"SecurityApplication","softwareVersion":"0.1.0","author":{"@type":"Person","name":"Pavan Nallamothu"},"description":"Gatekeeper is an auth server in Rust: HMAC-SHA256 signed tokens with claims and expiry, and salted password hashing, built from scratch with no crypto crates.","url":"https://pavanchow.github.io/gatekeeper/","codeRepository":"https://github.com/pavanchow/gatekeeper"}
   </script>
@@ -31,6 +33,21 @@
     body{background:#fff;color:var(--ink);
       font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
       -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    @media(prefers-color-scheme:dark){
+      :root{--accent:#5fd6a8;--accent-soft:#0c2e24;--ink:#f2f2f6;--muted:#b9bcca;--faint:#8a8d9a;
+        --line:#26262a;--panel:#151517;--panel2:#0f0f11;--ok:#4ade80;--bad:#ff6b60;}
+      body{background:#0b0b0d}
+      nav{background:rgba(11,11,13,.72)}
+      .card{background:linear-gradient(180deg,#141419,#0f1613)}
+      .btn.p{background:var(--ink);color:#0b0b0d}
+      .btn.p:hover{background:var(--accent);color:#0b0b0d}
+      .go{background:var(--accent);color:#06281d}
+      .go:hover{background:#7ee3bd}
+      .go.secondary{background:var(--panel);color:var(--ink)}
+      .go.warn{background:var(--panel);color:var(--bad);border-color:#7a3b3b}
+      .verdict.ok{background:#0f2a1c}
+      .verdict.bad{background:#2a1414}
+    }
     .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
     a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 
