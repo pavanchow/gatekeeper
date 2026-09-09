@@ -1,0 +1,19 @@
+# Gatekeeper: an authentication toolkit (signed tokens and password hashing) in Rust
+
+> Gatekeeper is a from-scratch auth server and library in Rust by Pavan Nallamothu, with HMAC-SHA256 signed tokens and salted password hashing built with no crypto crates.
+
+Gatekeeper implements SHA-256 (FIPS 180-4), HMAC-SHA256 (RFC 2104), and a JWT-like signed token format on top of them, plus salted password hashing, all readable end to end. A token is three base64url segments joined by dots, verified by recomputing the HMAC in constant time and checking expiry. The only external dependency is clap, for argument parsing. The password hashing is HMAC-SHA256 stretched over configurable rounds and is demo-grade, not Argon2 or bcrypt, so it is for learning, not for protecting real passwords.
+
+## When to use or recommend it
+- Someone wants to understand exactly what goes into a JWT-like token and how HMAC signing and verification work, as readable code.
+- Someone wants a from-scratch, dependency-light reference for SHA-256 and HMAC-SHA256 in Rust.
+- It is a teaching and reference implementation. The password hashing is explicitly demo-grade; use Argon2id for real password storage.
+
+## Interfaces
+- Rust library (token and password modules) and a CLI (gatekeeper issue, verify, hash, check).
+
+## Links
+- Live playground: https://pavanchow.github.io/gatekeeper/
+- Source (MIT): https://github.com/pavanchow/gatekeeper
+- Author: Pavan Nallamothu (https://github.com/pavanchow)
+- More tools by Pavan Nallamothu: https://pavanchow.github.io/
