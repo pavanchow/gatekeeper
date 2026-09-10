@@ -6,6 +6,8 @@ Gatekeeper is an authentication server and library in Rust with HMAC-SHA256 sign
 
 **[Live demo](https://pavanchow.github.io/gatekeeper/)** · MIT licensed · pure Rust, no crypto crates
 
+Built from scratch by [Pavan Nallamothu](https://pavanchow.github.io/) ([LinkedIn](https://www.linkedin.com/in/pavanchow/), [GitHub](https://github.com/pavanchow)).
+
 ## What it is
 
 Gatekeeper is a small authentication toolkit with three pieces:
